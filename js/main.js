@@ -57,27 +57,29 @@ Play.prototype = {
 		// set some colors...
 		game.stage.backgroundColor = '#FACADE';
 
-		this.palette = {		// setup a palette object
-			A: '#1B1B3A',
-			B: '#693668',
-			C: '#A74482', 
-			D: '#F84AA7',
-			E: '#FF3562' 
-		};
+		this.palette = [		// setup a palette object
+			'#1B1B3A',
+			'#693668',
+			'#A74482', 
+			'#F84AA7',
+			'#FF3562' 
+		];
 
-		this.greeting_text = 'Hello World!\nHere is some text with some newlines.\nThis typeface is called Georgia.\nIt is a serif font.\nYou should edit this string to add your\nown text. Make sure that it\'s really long\nso we can demonstrate word wrapping.';
+		this.greeting_text = 'Hello World! Here is some text with some newlines. This typeface is called Georgia. It is a serif font.\nYou should edit this string to add your\nown text. Make sure that it\'s really long\nso we can demonstrate word wrapping.';
 		
 		let text_style = {
-			font: 'Georgia',
+			font: 'Grenze',
 			fontSize: 32, 
-			fill: this.palette.D,
+			fill: this.palette[3],
+			wordWrap: true,
+			wordWrapWidth: 570
 		};
 		this.greeting = game.add.text(32, 32, this.greeting_text, text_style);
-		//this.greeting.setText("Now it says this!");
+		
 		
 
 		// enable a p2 body on greeting text
-		//game.physics.p2.enable(this.greeting);
+		game.physics.p2.enable(this.greeting);
 	
 		/*
 		// text
@@ -101,20 +103,21 @@ Play.prototype = {
 
 		text = game.add.text(32, 325, 'Apparently we had reached a great height in the atmosphere, for the sky was a dead black, and the stars had ceased to twinkle. By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside, the sable cloud beneath was dished out, and the car seemed to float in the middle of an immense dark sphere, whose upper half was strewn with silver. Looking down into the dark gulf below, I could see a ruddy light streaming through a rift in the clouds.', textStyle);
 		*/
-		// let text01 = game.add.bitmapText(32, 32, 'gem', 'Bitmap text, yeah!', 12);
-		// let text02 = game.add.bitmapText(32, 64, 'gem', 'OK, that was too small...', 24);
-		// let text03 = game.add.bitmapText(32, 128, 'gem', 'Here\'s the default size of 32 ;p');
-		// let text04 = game.add.bitmapText(32, 256, 'gem', 'NOW I AM SHOUTING!', 64);
-		// let text05 = game.add.bitmapText(32, 375, 'gem', 'BLUR', 256);
+		//let text01 = game.add.bitmapText(32, 32, 'gem', 'Bitmap text, yeah!', 12);
+		//let text02 = game.add.bitmapText(32, 64, 'gem', 'OK, that was too small...', 24);
+		//let text03 = game.add.bitmapText(32, 128, 'gem', 'Here\'s the default size of 32 ;p');
+		//let text04 = game.add.bitmapText(32, 256, 'gem', 'NOW I AM SHOUTING!', 64);
+		//let text05 = game.add.bitmapText(32, 375, 'gem', 'BLUR', 256);
 
 	},
 	update: function() {
 		if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
-			//this.spawnAlphabet();
+			this.spawnAlphabet();
+			this.greeting.setText("Now it says this!");
 		}
 	},
 	render: function() {
-		//game.debug.text('Spacebar = alphabet rain', 32, 32, '#ffff00');
+		game.debug.text('Spacebar = alphabet rain', 32, 32, '#ffff00');
 	},
 	spawnAlphabet: function() {
 		// spawn random letters
@@ -125,8 +128,8 @@ Play.prototype = {
 			fill: this.palette[Math.floor(Math.random() * this.palette.length)]
 		};
 		// grab a random letter from the alphabet
-		let alphabet = "abcdefghijklmnopqrstuvwxyz";
-		//let alphabet = "あえいうおはへひふほかけきくこまめみむもられりるろたてちつと";
+		//let alphabet = "abcdefghijklmnopqrstuvwxyz";
+		let alphabet = "あえいうおはへひふほかけきくこまめみむもられりるろたてちつと";
 		let letter = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
 		let alphaBit = game.add.text(x, game.world.height*0.1, letter, textStyle);
 
@@ -140,6 +143,6 @@ Play.prototype = {
 };
 
 // init and states
-game = new Phaser.Game(650, 650);
+game = new Phaser.Game(650, 550);
 game.state.add('Play', Play);
 game.state.start('Play');
