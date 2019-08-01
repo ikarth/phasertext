@@ -65,12 +65,14 @@ Play.prototype = {
 			E: '#FF3562' 
 		};
 
-		this.greeting_text = 'Hello World!\nHere is some text with some newlines.\nThis typeface is called Georgia.\nIt is a serif font.\nYou should edit this string to add your\nown text. Make sure that it\'s really long\nso we can demonstrate word wrapping.';
+		this.greeting_text = 'According to all known laws of aviation, there is no way a bee should be able to fly.';
 		
 		let text_style = {
 			font: 'Georgia',
 			fontSize: 32, 
 			fill: this.palette.D,
+			wordWrap: true,
+			wordWrapWidth: 500
 		};
 		this.greeting = game.add.text(32, 32, this.greeting_text, text_style);
 
