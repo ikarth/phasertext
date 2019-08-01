@@ -55,7 +55,7 @@ Play.prototype = {
 		this.alphaBits = game.add.group();
 
 		// set some colors...
-		game.stage.backgroundColor = '#FACADE';
+		game.stage.backgroundColor = '#693668';
 
 		this.palette = {		// setup a palette object
 			A: '#1B1B3A',
@@ -65,12 +65,14 @@ Play.prototype = {
 			E: '#FF3562' 
 		};
 
-		this.greeting_text = 'Hello World!\nHere is some text with some newlines.\nThis typeface is called Georgia.\nIt is a serif font.\nYou should edit this string to add your\nown text. Make sure that it\'s really long\nso we can demonstrate word wrapping.';
+		this.greeting_text = 'Hello World! AAAAAAAAAAAAAA AAAAAAAAAAAAAA AAAAAAAAAAAAAA AAAAAAAAAA!\nHere is some text with some newlines.\nThis typeface is called Shadows Into Light. What a dramatic name. You should edit this string to add your own text. Make sure that it\'s really long so we can demonstrate word wrapping.';
 		
 		let text_style = {
-			font: 'Georgia',
+			font: 'Shadows Into Light',
 			fontSize: 32, 
 			fill: this.palette.D,
+			wordWrap: true,
+			wordWrapWidth: 570
 		};
 		this.greeting = game.add.text(32, 32, this.greeting_text, text_style);
 
