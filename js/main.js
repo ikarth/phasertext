@@ -55,7 +55,7 @@ Play.prototype = {
 		this.alphaBits = game.add.group();
 
 		// set some colors...
-		game.stage.backgroundColor = '#FACADE';
+		game.stage.backgroundColor = '#000000';
 
 		this.palette = {		// setup a palette object
 			A: '#1B1B3A',
@@ -65,14 +65,20 @@ Play.prototype = {
 			E: '#FF3562' 
 		};
 
-		this.greeting_text = 'Hello World!\nHere is some text with some newlines.\nThis typeface is called Georgia.\nIt is a serif font.\nYou should edit this string to add your\nown text. Make sure that it\'s really long\nso we can demonstrate word wrapping.';
+		this.greeting_text = 'Hello World! Here is some text with some newlines. This typeface is called Georgia. It is a serif font. This is a really long string to replace the new line and to help demonstrate word wrapping in the end.';
 		
 		let text_style = {
-			font: 'Georgia',
+			font: 'Times New Roman',
 			fontSize: 32, 
 			fill: this.palette.D,
+			//added in to give word wrap to the text 
+			wordWrap: true,
+			wordWrapWidth: 570,
 		};
 		this.greeting = game.add.text(32, 32, this.greeting_text, text_style);
+		
+		//enable a p2 physics to the text
+		game.physics.p2.enable(this.greeting);
 
 
 
